@@ -53,7 +53,11 @@
     removeEvent = function(el, e, callback, capture)
     {
         if (hasEventListeners) {
-            el.removeEventListener(e, callback, !!capture);
+            try {
+                el.removeEventListener(e, callback, !!capture);
+            } catch(e) {
+                
+            }
         } else {
             el.detachEvent('on' + e, callback);
         }
