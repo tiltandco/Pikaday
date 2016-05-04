@@ -53,6 +53,7 @@
     removeEvent = function(el, e, callback, capture)
     {
         if (hasEventListeners) {
+            // Try catch added to avoid zone errors
             try {
                 el.removeEventListener(e, callback, !!capture);
             } catch(e) {
