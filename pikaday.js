@@ -387,7 +387,8 @@
         },
 
         renderTable = function (opts, data) {
-            return '<table cellpadding="0" cellspacing="0" class="pika-table">' + renderHead(opts) + renderBody(data) + '</table>';
+            return '<table cellpadding="0" cellspacing="0" class="pika-table">' + renderHead(opts) + renderBody(data) +
+                '</table><div class="pika-footer"><button class="pika-done-btn">Done</button></div>';
         },
 
 
@@ -406,6 +407,10 @@
                 var target = e.target || e.srcElement;
                 if (!target) {
                     return;
+                }
+
+                if (hasClass(target, 'pika-done-btn')) {
+                    self.hide();
                 }
 
                 if (!hasClass(target, 'is-disabled')) {
